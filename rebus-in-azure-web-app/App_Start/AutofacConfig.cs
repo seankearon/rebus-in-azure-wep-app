@@ -7,8 +7,6 @@ namespace rebus_in_azure_web_app
 {
     public static class AutofacConfig
     {
-        #region Static Methods
-
         public static void Register(HttpConfiguration config)
         {
             // http://autofac.readthedocs.org/en/latest/integration/webapi.html#quick-start 
@@ -18,9 +16,9 @@ namespace rebus_in_azure_web_app
 
             var container = builder.Build();
 
+            RebusConfig.ConfigureRebus(container);
+
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
-
-        #endregion
     }
 }
